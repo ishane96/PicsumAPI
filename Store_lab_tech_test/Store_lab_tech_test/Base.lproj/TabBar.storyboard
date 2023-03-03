@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xs5-Nd-1ph">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="zE4-MG-yxu">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xs5-Nd-1ph" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dHy-Zb-BPZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="YFZ-T9-84Y" kind="relationship" relationship="viewControllers" id="llG-5U-UQ2"/>
+                        <segue destination="M7L-O2-dLG" kind="relationship" relationship="viewControllers" id="MHC-By-5OP"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJK-jf-72z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46.564885496183201" y="-2.1126760563380285"/>
+        </scene>
+        <!--onlineNavController-->
+        <scene sceneID="2BT-Bt-Oza">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="onlineNavController" storyboardName="Main" referencedIdentifier="onlineNavController" id="YFZ-T9-84Y" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yH1-2r-zM2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="555" y="498"/>
+        </scene>
+        <!--favouritesNavController-->
+        <scene sceneID="5ZB-dd-19U">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="favouritesNavController" storyboardName="Main" referencedIdentifier="favouritesNavController" id="M7L-O2-dLG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mWU-3n-Qrj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-381" y="487"/>
+        </scene>
+    </scenes>
+</document>
