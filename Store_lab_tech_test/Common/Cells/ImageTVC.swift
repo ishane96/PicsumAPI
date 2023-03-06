@@ -8,37 +8,38 @@
 import UIKit
 
 class ImageTVC: UITableViewCell {
-
+    
     @IBOutlet weak var imageVw: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var nameLbl: UILabel!
-    var session: URLSessionDataTask?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     override func prepareForReuse() {
         imageVw.image = nil
-        session?.cancel()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func setupCell(image: Image){
         nameLbl.text = image.author
-      session =  image.getImage {[weak self] success, message, data in
+        activityIndicator.startAnimating()
+        image.getImage {[weak self] success, message, data in
             guard let self = self else {return}
-            if success{
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                if success {
                     self.imageVw.image = UIImage(data: data!)
                 }
-              
             }
         }
-        session?.resume()
+    }
+    
+    func setupOfflineCell(image: ImageEntity){
+        activityIndicator.stopAnimating()
+        imageVw.image = UIImage(data: image.image!)
+        nameLbl.text = image.author
     }
     
 }

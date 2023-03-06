@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 typealias CompletionHandler = (_ status: Bool, _ message: String) -> ()
 typealias CompletionHandlerWithData = (_ status: Bool, _ message: String, _ data: Data?) -> ()
@@ -21,27 +22,28 @@ class HomeVM {
     var isFetching = false
     var isPagingCompleted = false
     
-    func loadAll(completion: @escaping CompletionHandler) {
+    func getImageList(completion: @escaping CompletionHandler){
         let url = URL(string: "https://picsum.photos/v2/list?page=\(page)&limit=10")!
-        
-        let task = self.urlSession.dataTask(with: url) { data, resp, error in
-            guard error == nil else {
-                completion(false, error?.localizedDescription ?? "Error")
+
+        APIs.shared.getAllData(url: url, [Image].self) {[weak self] response, message, error in
+            guard let self = self else {return}
+            guard let response = response else {
+                completion(false, "Failed")
                 return
             }
             do {
-                let data = data ?? Data()
-                let response = try JSONDecoder().decode([Image].self, from: data)
-                self.images.append(contentsOf: response)
-//                self.nextPageToken = response.
-                if 10 > response.count {
-                    self.isPagingCompleted = true
+                if error == nil {
+                    self.images.append(contentsOf: response)
+                    if 10 > response.count {
+                        self.isPagingCompleted = true
+                    }
+                    completion(true, "")
+                } else {
+                    completion(false, message ?? "Failed")
                 }
-                completion(true,"")
-            } catch {
-                completion(false, error.localizedDescription)
             }
         }
-        task.resume()
     }
+    
+    
 }

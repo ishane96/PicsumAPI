@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageTVC" rowHeight="111" id="KGk-i7-Jjw" customClass="ImageTVC" customModule="Store_lab_tech_test" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageTVC" rowHeight="111" id="KGk-i7-Jjw" customClass="ImageTVC" customModule="Store_lab_tech_test" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -17,30 +17,35 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QFn-Te-5pP">
-                        <rect key="frame" x="16" y="16" width="113" height="78"/>
+                        <rect key="frame" x="10" y="10" width="113" height="91"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="113" id="C7W-EY-WGq"/>
-                            <constraint firstAttribute="width" secondItem="QFn-Te-5pP" secondAttribute="height" multiplier="113:78" id="dRk-7I-S12"/>
+                            <constraint firstAttribute="width" secondItem="QFn-Te-5pP" secondAttribute="height" multiplier="113:91" id="agZ-bR-IKt"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQh-iB-YEG">
-                        <rect key="frame" x="149" y="25" width="42" height="21"/>
+                        <rect key="frame" x="143" y="25" width="41.333333333333343" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Vns-8Z-V75">
+                        <rect key="frame" x="56.666666666666657" y="45.666666666666664" width="20" height="19.999999999999993"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yQh-iB-YEG" firstAttribute="leading" secondItem="QFn-Te-5pP" secondAttribute="trailing" constant="20" id="5vt-hx-6Uh"/>
+                    <constraint firstItem="Vns-8Z-V75" firstAttribute="centerX" secondItem="QFn-Te-5pP" secondAttribute="centerX" id="I1H-IO-9tV"/>
                     <constraint firstItem="QFn-Te-5pP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Nbf-vb-d1b"/>
                     <constraint firstItem="yQh-iB-YEG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="Ovp-H5-TWp"/>
                     <constraint firstItem="QFn-Te-5pP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="fa3-Ci-F8X"/>
-                    <constraint firstAttribute="trailing" secondItem="yQh-iB-YEG" secondAttribute="trailing" constant="20" id="hNf-TA-OhD"/>
                     <constraint firstAttribute="bottom" secondItem="QFn-Te-5pP" secondAttribute="bottom" constant="10" id="scc-Bd-UE7"/>
+                    <constraint firstItem="Vns-8Z-V75" firstAttribute="centerY" secondItem="QFn-Te-5pP" secondAttribute="centerY" id="vU9-aO-DZ7"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityIndicator" destination="Vns-8Z-V75" id="F7C-ct-HuL"/>
                 <outlet property="imageVw" destination="QFn-Te-5pP" id="JYS-V9-BPo"/>
                 <outlet property="nameLbl" destination="yQh-iB-YEG" id="urk-5Q-K9T"/>
             </connections>
