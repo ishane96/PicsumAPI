@@ -34,7 +34,7 @@ class CoreDataHelper {
     func fetchData() {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageEntity")
-       
+        
         do {
             imageArr = try context.fetch(fetchRequest) as! [ImageEntity]
         } catch {
@@ -50,10 +50,10 @@ class CoreDataHelper {
         do {
             let result = try context.fetch(fetch)
             if result.count > 0 {
-                    return true
-                } else {
-                    return false
-                }
+                return true
+            } else {
+                return false
+            }
         } catch {
             return false
         }

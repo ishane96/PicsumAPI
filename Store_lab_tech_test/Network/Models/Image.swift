@@ -27,7 +27,7 @@ struct Image: Codable {
             if success {
                 completion(true, "", data)
             } else{ }
-           
+            
         }
     }
 }

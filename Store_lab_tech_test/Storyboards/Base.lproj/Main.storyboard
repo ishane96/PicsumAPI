@@ -127,7 +127,7 @@
             </objects>
             <point key="canvasLocation" x="3753.4351145038167" y="-2.1126760563380285"/>
         </scene>
-        <!--Offline Image ListVC-->
+        <!--Favourites-->
         <scene sceneID="OQT-2X-BWa">
             <objects>
                 <viewController id="GQG-Ch-BhE" customClass="OfflineImageListVC" customModule="Store_lab_tech_test" customModuleProvider="target" sceneMemberID="viewController">
@@ -153,7 +153,7 @@
                             <constraint firstItem="le7-vY-Wq8" firstAttribute="top" secondItem="BMs-sk-6ha" secondAttribute="top" id="zXL-30-PM8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bar-q7-WSu"/>
+                    <navigationItem key="navigationItem" title="Favourites" id="bar-q7-WSu"/>
                     <connections>
                         <outlet property="tableView" destination="le7-vY-Wq8" id="XIJ-nG-ibe"/>
                         <segue destination="dUw-7b-kma" kind="show" identifier="offlineSegue" id="9PP-hA-pbZ"/>

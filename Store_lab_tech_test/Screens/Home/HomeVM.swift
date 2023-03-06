@@ -8,9 +8,6 @@
 import UIKit
 import CoreData
 
-typealias CompletionHandler = (_ status: Bool, _ message: String) -> ()
-typealias CompletionHandlerWithData = (_ status: Bool, _ message: String, _ data: Data?) -> ()
-
 class HomeVM {
     
     var images: [Image] = []
@@ -24,7 +21,7 @@ class HomeVM {
     
     func getImageList(completion: @escaping CompletionHandler){
         let url = URL(string: "https://picsum.photos/v2/list?page=\(page)&limit=10")!
-
+        
         APIs.shared.getAllData(url: url, [Image].self) {[weak self] response, message, error in
             guard let self = self else {return}
             guard let response = response else {

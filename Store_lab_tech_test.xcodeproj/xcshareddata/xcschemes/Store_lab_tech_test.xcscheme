@@ -40,8 +40,7 @@
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5CFD0ED329B0E3480035DD0C"
@@ -51,8 +50,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5CFD0EDD29B0E3480035DD0C"

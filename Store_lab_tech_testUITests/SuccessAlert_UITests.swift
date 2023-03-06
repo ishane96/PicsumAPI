@@ -8,22 +8,17 @@
 import XCTest
 
 final class Store_lab_tech_testUITests: XCTestCase {
-
+    
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
-
-    override func tearDownWithError() throws {
-    }
-
-    func testTableViewDidSelect() throws {
-        // UI tests must launch the application that they test.
+    
+    func testSuccessAlert() throws {
         let app = XCUIApplication()
-        app.launch()
-                                
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.navigationBars["Detail"].buttons["favorite"].tap()
+        app.alerts["Success"].scrollViews.otherElements.buttons["OK"]/*@START_MENU_TOKEN@*/.press(forDuration: 0.5);/*[[".tap()",".press(forDuration: 0.5);"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
     }
-
+    
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.
