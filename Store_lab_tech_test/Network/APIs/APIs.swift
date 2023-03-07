@@ -19,21 +19,26 @@ class APIs{
     func getAllData<T: Decodable>(url: URL, _ mapType: T.Type, completion: @escaping (_ response: T?,
                                                                                       _ message: String?,
                                                                                       _ error: Error?) -> Void){
-        let task = urlSession.dataTask(with: url) { data, response, error in
-            do{
-                if error == nil {
-                    let data = data ?? Data()
-                    let response =  try JSONDecoder().decode(T.self, from: data)
-                    completion(response, "", nil)
-                } else {
-                    completion(nil, error?.localizedDescription, nil)
+        if NetworkReachability.isInternetAvailable(){
+            let task = urlSession.dataTask(with: url) { data, response, error in
+                do{
+                    if error == nil {
+                        let data = data ?? Data()
+                        let response =  try JSONDecoder().decode(T.self, from: data)
+                        completion(response, "", nil)
+                    } else {
+                        completion(nil, error?.localizedDescription, nil)
+                    }
+                }catch {
+                    completion(nil, error.localizedDescription, nil)
                 }
-            }catch {
-                completion(nil, error.localizedDescription, nil)
+                
             }
-            
+            task.resume()
+            completion(nil, "", nil)
+        } else {
+            completion(nil, "Internet Connection is not available", nil)
         }
-        task.resume()
     }
     
     func getImageData(url: URL, completion: @escaping CompletionHandlerWithData){
