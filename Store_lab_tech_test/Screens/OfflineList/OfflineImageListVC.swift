@@ -14,8 +14,15 @@ class OfflineImageListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      _ = CoreDataHelper.shared.fetchData()
+    }
+    func setupUI(){
         tableView.register(UINib(nibName: "ImageTVC", bundle: nil), forCellReuseIdentifier: "imageTVC")
-        CoreDataHelper.shared.fetchData()
         tableView.reloadData()
     }
     

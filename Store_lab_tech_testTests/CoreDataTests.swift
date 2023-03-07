@@ -20,15 +20,27 @@ class CoreDataTests: XCTestCase {
         sut.context = coreDataStack.persistentContainer.viewContext
     }
     
-    
     func testSaveToCoreData() {
         
-        sut.saveToCoreData(id: "0", data: Data(), author: "Alejandro Escamilla") { status, message in
+       _ = sut.saveToCoreData(id: "0", data: Data(), author: "Alejandro Escamilla") { status, message in
             XCTAssertEqual(status, true)
             XCTAssertNotNil(Data.self)
             XCTAssertEqual(message, "")
         }
         
+    }
+    
+    func testFetchFromCoreData(){
+        
+        let newImage = sut.saveToCoreData(id: "0", data: Data(), author: "Alejandro Escamilla") { status, message in
+            XCTAssertEqual(status, true)
+            XCTAssertNotNil(Data.self)
+            XCTAssertEqual(message, "")
+        }
+        
+        let getImages = sut.fetchData()
+        XCTAssertNotNil(getImages)
+        XCTAssertTrue(getImages.count == 1)
     }
     
 }

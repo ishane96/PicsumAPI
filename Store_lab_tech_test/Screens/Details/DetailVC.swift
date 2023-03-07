@@ -68,7 +68,7 @@ class DetailVC: UIViewController {
             if success {
                 DispatchQueue.main.async {
                     
-                    CoreDataHelper.shared.saveToCoreData(id: self.image!.id, data: data!, author: self.image!.author, completion: { success, message in
+                   _ = CoreDataHelper.shared.saveToCoreData(id: self.image!.id, data: data!, author: self.image!.author, completion: { success, message in
                         if success {
                             self.checkExisitingObject()
                             self.alert(title: "Success", message: "Added to Favourites")

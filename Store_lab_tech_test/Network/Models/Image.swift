@@ -26,7 +26,9 @@ struct Image: Codable {
         APIs.shared.getImageData(url: imageURL) { success, message, data in
             if success {
                 completion(true, "", data)
-            } else{ }
+            } else{
+                completion(false, message, nil)
+            }
             
         }
     }

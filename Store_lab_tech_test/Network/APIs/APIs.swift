@@ -39,7 +39,7 @@ class APIs{
     func getImageData(url: URL, completion: @escaping CompletionHandlerWithData){
         let task = urlSession.dataTask(with: url) { (data, response, error) in
             
-            if data!.count > 0 {
+            if data?.count ?? 0 > 0 {
                 if let data = data {
                     completion(true, "success", data)
                 } else {

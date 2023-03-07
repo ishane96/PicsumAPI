@@ -36,12 +36,10 @@ final class ImageListTests: XCTestCase {
     
     func testImageDownload() {
         let config = URLSessionConfiguration.ephemeral
-        config.protocolClasses = [URLProtocolMock.self]
         let urlSession = URLSession(configuration: config)
-        URLProtocolMock.mockResponse = URLResponse(url: URL(string: "https://picsum.photos/id/0/5000/3333")!, mimeType: "", expectedContentLength: 123, textEncodingName: nil)
-        let expectation = XCTestExpectation(description: "Image downloaded")
-        let url = URL(string: "https://picsum.photos/id/0/5000/3333")!
         let sut = APIs(urlSession: urlSession)
+        let expectation = XCTestExpectation(description: "Image downloaded")
+        let url = URL(string: "https://picsum.photos/id/0/5000/333")!
         
         sut.getImageData(url: url) { status, message, data in
             XCTAssertNotNil(data)
@@ -49,7 +47,7 @@ final class ImageListTests: XCTestCase {
             expectation.fulfill()
         }
 
-        wait(for: [expectation], timeout: 10.0)
+        wait(for: [expectation], timeout: 30.0)
     }
 
 }

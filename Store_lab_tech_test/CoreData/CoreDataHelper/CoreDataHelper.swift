@@ -15,7 +15,7 @@ class CoreDataHelper {
     var context = CoreDataStack.shared.persistentContainer.viewContext
     
     
-    func saveToCoreData(id: String, data: Data, author: String, completion: @escaping CompletionHandler) {
+    func saveToCoreData(id: String, data: Data, author: String, completion: @escaping CompletionHandler) -> ImageEntity? {
         
         let imageInstance = ImageEntity(context: context)
         
@@ -25,21 +25,28 @@ class CoreDataHelper {
         do {
             try context.save()
             completion(true, "")
+            return imageInstance
+           
         } catch {
             completion(false, error.localizedDescription)
+            return nil
+            
         }
         
     }
     
-    func fetchData() {
+    func fetchData() -> [ImageEntity] {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageEntity")
         
         do {
             imageArr = try context.fetch(fetchRequest) as! [ImageEntity]
+            return imageArr
         } catch {
             print("Error while fetching the image")
+            return []
         }
+        
     }
     
     func checkExist(id: String) -> Bool{
