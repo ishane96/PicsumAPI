@@ -25,7 +25,7 @@ class HomeVM {
         APIs.shared.getAllData(url: url, [Image].self) {[weak self] response, message, error in
             guard let self = self else {return}
             guard let response = response else {
-                completion(false, "Internet Connection appears offline")
+                completion(false, message!)
                 return
             }
             do {

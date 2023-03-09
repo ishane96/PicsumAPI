@@ -35,9 +35,8 @@ class APIs{
                 
             }
             task.resume()
-            completion(nil, "", nil)
         } else {
-            completion(nil, "Internet Connection is not available", nil)
+            completion(nil, "Internet Connection appears offline", nil)
         }
     }
     
