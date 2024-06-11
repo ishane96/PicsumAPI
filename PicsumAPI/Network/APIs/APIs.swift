@@ -21,8 +21,11 @@ class APIs{
                                                                                       _ error: Error?) -> Void){
         if NetworkReachability.isInternetAvailable(){
             let task = urlSession.dataTask(with: url) { data, response, error in
+
+                let httpResponse = response as? HTTPURLResponse
+
                 do{
-                    if error == nil {
+                    if error == nil && httpResponse?.statusCode == 200 {
                         let data = data ?? Data()
                         let response =  try JSONDecoder().decode(T.self, from: data)
                         completion(response, "", nil)

@@ -31,7 +31,7 @@ final class ImageListTests: XCTestCase {
             XCTAssertEqual(response?.first?.author, "Alejandro Escamilla")
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 15)
+        wait(for: [expectation], timeout: 60)
     }
     
     func testImageDownload() {
