@@ -27,9 +27,7 @@ class HomeVC: UIViewController {
         vm.getImageList{[weak self] status, message in
             guard let self = self else {return}
             if status {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.tableView.reloadData()
             } else {
                 self.alert(title: "Alert", message: message)
             }

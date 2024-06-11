@@ -22,25 +22,27 @@ class HomeVM {
     func getImageList(completion: @escaping CompletionHandler){
         let url = URL(string: "https://picsum.photos/v2/list?page=\(page)&limit=10")!
         
-        APIs.shared.getAllData(url: url, [Image].self) {[weak self] response, message, error in
-            guard let self = self else {return}
-            guard let response = response else {
-                completion(false, message!)
-                return
-            }
-            do {
-                if error == nil {
-                    self.images.append(contentsOf: response)
-                    if 10 > response.count {
-                        self.isPagingCompleted = true
+        DispatchQueue.global(qos: .background).async {
+            APIs.shared.getAllData(url: url, [Image].self) {[weak self] response, message, error in
+                guard let self = self else {return}
+                DispatchQueue.main.async {
+                    guard let response = response else {
+                        completion(false, message!)
+                        return
                     }
-                    completion(true, "")
-                } else {
-                    completion(false, message ?? "Failed")
+                    do {
+                        if error == nil {
+                            self.images.append(contentsOf: response)
+                            if 10 > response.count {
+                                self.isPagingCompleted = true
+                            }
+                            completion(true, "")
+                        } else {
+                            completion(false, message ?? "Failed")
+                        }
+                    }
                 }
             }
         }
     }
-    
-    
 }
